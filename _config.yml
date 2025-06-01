@@ -25,22 +25,22 @@ author:
   avatar           : "profile.png"
   name             : "Gongxian Zeng"
   pronouns         : # example: "he/his"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
+  bio              : "bio(TBA)"
+  location         : "Shenzhen"
   employer         : "Sun Yat-sen University "
   uri              : # URL
   email            : "zenggx7@mail.sysu.edu.cn" 
 
   # Academic websites
-  academia         : # URL
-  arxiv            : # URL - Update with the correct link to your profile
+  # academia         : # URL
+  # arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : "https://scholar.google.com/citations?user=oWUWOuYAAAAJ&hl=en"
-  impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
-  semantic         : # URL
-  pubmed           : # URL
-  researchgate     : # URL
-  scopus           : # URL
+  # impactstory      : # URL
+  # orcid            : # URL
+  # semantic         : # URL
+  # pubmed           : # URL
+  # researchgate     : # URL
+  # scopus           : # URL
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
