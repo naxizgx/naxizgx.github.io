@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I received a BSc in information security from Huazhong university of science and technology in 2015, and a PhD in Computer Science from The University of Hong Kong in 2020. Before I joined school of cyber science and technology of SYSU as an associate professor, I wored as an assistant researcher in Pengcheng Laboratory.
+I received a BSc in information security from Huazhong university of science and technology in 2015, and a PhD in Computer Science from The University of Hong Kong in 2020. Before I joined school of cyber science and technology at SYSU as an associate professor, I worked as an assistant researcher in Pengcheng Laboratory.
 
 # Research Interests
 
