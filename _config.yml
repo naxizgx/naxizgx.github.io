@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Your Name / Site Title"
+title                    : "Gongxian Zeng / Homepage"
 title_separator          : "-"
 name                     : &name "Gongxian Zeng"
 description              : &description "Hi!(TBA)"
