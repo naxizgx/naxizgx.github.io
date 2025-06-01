@@ -1,8 +1,8 @@
 ---
 title: "DAG-Σ: A DAG-Based Sigma Protocol for Relations in CNF"
 collection: publications
-category: manuscripts
-permalink: /publication/2022-12-paper-title-number-1
+category: conference
+permalink: /publication/2022-12-paper-DAG
 excerpt: 'This paper is about the composition of Sigma protocols using DAG.'
 date: 2020-12-05
 venue: 'ASIACRYPT 2022'
