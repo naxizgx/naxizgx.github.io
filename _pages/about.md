@@ -7,30 +7,18 @@ redirect_from:
   - /about.html
 ---
 
-曾功贤，副教授，博士生导师。2020年博士毕业于香港大学，同年3月加入鹏城实验室任助理研究员。长期从事密码理论和应用研究，当前主要研究方向为零知识证明、通信安全与认证，相关研究成果发表在领域内顶会（ASIACRYPT、EUROCRYPT）。
+I received a BSc in information security from Huazhong university of science and technology in 2015, and a PhD in Computer Science from The University of Hong Kong in 2020. Before I joined school of cyber science and technology of SYSU as an associate professor, I wored as an assistant researcher in Pengcheng Laboratory.
 
-# 研究方向
+# Research Interests
 
-零知识证明、通信安全与认证
+Zero knowldge, Communication security and authentication
 
-# 教育与工作经历
+*Looking for Postdoc, PhD/Postgraduate students, and RAs to work with me at SYSU, Shenzhen Campus.
 
-2025.04-至今，中山大学，网络空间安全，副教授
-2020.03-2025.03，鹏城实验室，助理研究员
-2015.09-2020.01，香港大学，计算机科学系，博士
-2011.09-2015.06，华中科技大学，计算机学院，本科
-
-# 代表性成果
+# Selected Publications
 
 1.	Z Huang, J Lai, G Zeng*, J Weng. Mild Asymmetric Message Franking: Illegal-Messages-Only and Retrospective Content Moderation. ASIACRYPT 2024.
 2.	G Zeng, J Lai, Z Huang, L Zhang, X Wang, KY Lam, H Wang, J Weng. Non-interactive Zero-Knowledge Functional Proofs. ASIACRYPT 2023.
 3.	J Lai, G Zeng*, Z Huang, SM Yiu, X Mu, J Weng. Asymmetric group message franking: Definitions and constructions. EUROCRYPT 2023
 4.	Z Huang, J Lai, G Zeng, X Mu. Receiver selective opening security for identity-based encryption in the multi-challenge setting.” DCC 91(4):1233-1259(2023).
 5.	G Zeng, J Lai, Z Huang, Y Wang, Z Zheng. DAG-Σ: A DAG-Based Sigma Protocol for Relations in CNF. ASIACRYPT 2022
-
-# 联系方式
-
-邮箱：gxzeng@cs.hku.hk
-地址：深圳市光明区公常路66号中山大学工学园2栋408室
-
-*欢迎对以上研究方向感兴趣、并有志于密码学研究的同学与我联系。
