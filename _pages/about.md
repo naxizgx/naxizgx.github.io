@@ -17,8 +17,8 @@ Zero knowldge, Communication security and authentication
 
 # Selected Publications
 
-1.	Z Huang, J Lai, G Zeng*, J Weng. Mild Asymmetric Message Franking: Illegal-Messages-Only and Retrospective Content Moderation. ASIACRYPT 2024.
-2.	G Zeng, J Lai, Z Huang, L Zhang, X Wang, KY Lam, H Wang, J Weng. Non-interactive Zero-Knowledge Functional Proofs. ASIACRYPT 2023.
-3.	J Lai, G Zeng*, Z Huang, SM Yiu, X Mu, J Weng. Asymmetric group message franking: Definitions and constructions. EUROCRYPT 2023
-4.	Z Huang, J Lai, G Zeng, X Mu. Receiver selective opening security for identity-based encryption in the multi-challenge setting.” DCC 91(4):1233-1259(2023).
-5.	G Zeng, J Lai, Z Huang, Y Wang, Z Zheng. DAG-Σ: A DAG-Based Sigma Protocol for Relations in CNF. ASIACRYPT 2022
+1.	Z Huang, J Lai, __G Zeng__*, J Weng. Mild Asymmetric Message Franking: Illegal-Messages-Only and Retrospective Content Moderation. ASIACRYPT 2024.
+2.	__G Zeng__, J Lai, Z Huang, L Zhang, X Wang, KY Lam, H Wang, J Weng. Non-interactive Zero-Knowledge Functional Proofs. ASIACRYPT 2023.
+3.	J Lai, __G Zeng__*, Z Huang, SM Yiu, X Mu, J Weng. Asymmetric group message franking: Definitions and constructions. EUROCRYPT 2023
+4.	Z Huang, J Lai, __G Zeng__, X Mu. Receiver selective opening security for identity-based encryption in the multi-challenge setting.” DCC 91(4):1233-1259(2023).
+5.	__G Zeng__, J Lai, Z Huang, Y Wang, Z Zheng. DAG-Σ: A DAG-Based Sigma Protocol for Relations in CNF. ASIACRYPT 2022
