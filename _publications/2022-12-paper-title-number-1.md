@@ -3,7 +3,7 @@ title: "DAG-Σ: A DAG-Based Sigma Protocol for Relations in CNF"
 collection: publications
 category: manuscripts
 permalink: /publication/2022-12-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
+excerpt: 'This paper is about the composition of Sigma protocols using DAG.'
 date: 2020-12-05
 venue: 'ASIACRYPT 2022'
 paperurl: '[http://academicpages.github.io/files/paper1.pdf](https://eprint.iacr.org/2022/1569.pdf)'
