@@ -25,8 +25,8 @@ author:
   avatar           : "狗狗.png"
   name             : "Gongxian Zeng"
   pronouns         : # example: "he/his"  
-  bio              : "Associate professor, SYSU"
-  location         : "Shenzhen"
+  bio              : "Associate Professor, SYSU"
+  # location         : "Shenzhen"
   employer         : "Sun Yat-sen University "
   uri              : # URL
   email            : "zenggx7@mail.sysu.edu.cn" 
