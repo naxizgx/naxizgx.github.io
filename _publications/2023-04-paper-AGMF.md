@@ -1,7 +1,7 @@
 ---
 title: "Asymmetric group message franking: Definitions and constructions"
 collection: publications
-category: conference
+category: conferences
 permalink: /publication/2023-04-paper-DAG
 excerpt: 'As online group communication scenarios become more and more common these years,  malicious or unpleasant messages are much easier to spread on the internet. Message franking is a crucial cryptographic mechanism designed for content moderation in online end-to-end messaging systems, allowing the receiver of a malicious message to report the message to the moderator. Unfortunately, the existing message franking schemes  only consider  1-1 communication scenarios. 
 	

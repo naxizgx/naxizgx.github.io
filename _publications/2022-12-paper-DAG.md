@@ -1,7 +1,7 @@
 ---
 title: "DAG-Σ: A DAG-Based Sigma Protocol for Relations in CNF"
 collection: publications
-category: conference
+category: conferences
 permalink: /publication/2022-12-paper-DAG
 excerpt: 'This paper is about the composition of Sigma protocols for relations in CNF.'
 # excerpt: 'At CRYPTO 1994, Cramer, Damg{\aa}rd and Schoenmakers proposed a general method to construct proofs of  knowledge (PoKs), especially for $k$-out-of-$n$ partial knowledge, of which relations can be expressed in disjunctive normal form (DNF). Since then, proofs of $k$-out-of-$n$ partial knowledge have attracted much attention and some efficient constructions have been proposed.
