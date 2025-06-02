@@ -2,7 +2,7 @@
 title: "Asymmetric group message franking: Definitions and constructions"
 collection: publications
 category: conferences
-permalink: /publication/2023-04-paper-DAG
+permalink: /publication/2023-04-paper-AGMF
 excerpt: 'As online group communication scenarios become more and more common these years,  malicious or unpleasant messages are much easier to spread on the internet. Message franking is a crucial cryptographic mechanism designed for content moderation in online end-to-end messaging systems, allowing the receiver of a malicious message to report the message to the moderator. Unfortunately, the existing message franking schemes  only consider  1-1 communication scenarios. 
 	
 	In this paper, we systematically explore message franking in group communication scenarios. We introduce the notion of asymmetric group message franking (AGMF), and formalize its  security requirements. Then, we provide a framework of constructing AGMF from a new primitive, called HPSKEM. We also give a construction of HPSKEM based on the DDH assumption. Plugging the concrete  HPSKEM scheme  into our AGMF framework, we obtain a DDH-based AGMF scheme, which supports message franking in group communication scenarios.'
