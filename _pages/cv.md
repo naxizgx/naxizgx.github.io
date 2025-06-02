@@ -11,9 +11,10 @@ redirect_from:
 
 Education
 ======
-* Ph.D in department of computer science, HKU, 2020
+* Ph.D in department of computer science, HKU, 2015-2020
+  * Supervisor: Prof. S.M. Yiu
 <!-- * M.S. in Jekyll, GitHub University, 2014 -->
-* B.S. in Huazhong University of Science and Technology, 2015
+* B.S. in Huazhong University of Science and Technology, 2011-2015
 
 Work experience
 ======
