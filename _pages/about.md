@@ -12,7 +12,7 @@ I received a BSc in Information Security from Huazhong University of Science and
 
 ## Research Interests
 
-Zero knowldge, communication security and authentication
+Zero knowledge, communication security and authentication
 
 * Looking for Postdoc, PhD/Postgraduate students, and RAs to work with me at SYSU, Shenzhen Campus.
 
