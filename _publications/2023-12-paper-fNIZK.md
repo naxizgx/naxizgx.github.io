@@ -7,7 +7,7 @@ excerpt: 'This paper is about non-interactive zero-knowledge functional proofs.'
 date: 2023-12-06
 venue: 'ASIACRYPT 2023'
 paperurl: 'https://eprint.iacr.org/2023/1759'
-slideurl: 'https://iacr.org/submit/files/slides/2023/asiacrypt/asiacrypt2023/265/slides.pdf'
+slidesurl: 'https://iacr.org/submit/files/slides/2023/asiacrypt/asiacrypt2023/265/slides.pdf'
 
 citation: 'G Zeng, J Lai, Z Huang, L Zhang, X Wang, KY Lam, H Wang, J Weng. Non-interactive Zero-Knowledge Functional Proofs. ASIACRYPT 2023.'
 ---

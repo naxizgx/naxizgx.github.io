@@ -7,7 +7,7 @@ excerpt: 'This paper is about the abuse in message franking.'
 date: 2024-12-13
 venue: 'ASIACRYPT 2024'
 paperurl: 'https://eprint.iacr.org/2024/1608'
-slideurl: 'https://iacr.org/submit/files/slides/2024/asiacrypt/asiacrypt2024/46/46_slides.pdf'
+slidesurl: 'https://iacr.org/submit/files/slides/2024/asiacrypt/asiacrypt2024/46/46_slides.pdf'
 
 citation: 'Z Huang, J Lai, G Zeng, J Weng. Mild Asymmetric Message Franking: Illegal-Messages-Only and Retrospective Content Moderation. ASIACRYPT 2024.'
 ---
