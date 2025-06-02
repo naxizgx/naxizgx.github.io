@@ -3,7 +3,7 @@ title: "Mild Asymmetric Message Franking: Illegal-Messages-Only and Retrospectiv
 collection: publications
 category: conferences
 permalink: /publication/2024-12-paper-MAMF
-excerpt: 'This paper is about fixing template issue #693.'
+excerpt: 'This paper is about the abuse in message franking.'
 date: 2024-12-13
 venue: 'ASIACRYPT 2024'
 paperurl: 'https://eprint.iacr.org/2024/1608'
