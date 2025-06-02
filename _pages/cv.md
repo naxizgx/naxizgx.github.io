@@ -19,12 +19,12 @@ Work experience
 ======
 * 2025/05-Now: Associate Professor
   * SYSU
-  <!-- * Duties includes: Updates and improvements to template
+<!-- * Duties includes: Updates and improvements to template
   * Supervisor: The Users -->
 
 * 2020/03-2025/03: Assistant Researcher 
   * Pengcheng Laboratory
-  <!-- * Duties included: Merging pull requests
+<!-- * Duties included: Merging pull requests
   * Supervisor: Professor Hub -->
 
 <!-- * Summer 2015: Research Assistant
