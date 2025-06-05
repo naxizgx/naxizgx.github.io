@@ -5,7 +5,7 @@ category: manuscripts
 permalink: /publication/2021-07-18-paper-evoting
 excerpt: 'This paper constitutes an extended full version of a paper published in the Information Security Applications—20th International Conference (WISA 2019). The journal version improves the technical details and contains additional explanations and experiments.'
 date: 2021-07-18
-venue: 'TheComputerJournal'
+venue: 'The Computer Journal'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 paperurl: 'https://doi.org/10.1093/comjnl/bxab123'
 citation: 'G Zeng, M He, SM Yiu, Z Huang. A self-tallying electronic voting based on blockchain. The Computer Journal 65(12):3020-3034(2022).'
