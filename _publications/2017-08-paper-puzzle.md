@@ -3,7 +3,7 @@ title: "A Nonoutsourceable Puzzle under GHOST Rule"
 collection: publications
 category: conferences
 permalink: /publication/2017-08-paper-puzzle
-excerpt: 'This paper is about a self-tallying e-voting scheme based on blockchain.'
+excerpt: 'This paper is about nonoutsourceable puzzle in blockchain.'
 
 date: 2017-08-27
 venue: 'PST 2017'
