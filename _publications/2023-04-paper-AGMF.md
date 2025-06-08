@@ -1,5 +1,5 @@
 ---
-title: "Asymmetric group message franking: Definitions and constructions"
+title: "Asymmetric Group Message Franking: Definitions and Constructions"
 collection: publications
 category: conferences
 permalink: /publication/2023-04-paper-AGMF
@@ -9,7 +9,7 @@ venue: 'EUROCRYPT 2023'
 
 paperurl: '[PDF](https://eprint.iacr.org/2023/332.pdf)'
 slidesurl: 'https://iacr.org/submit/files/slides/2023/eurocrypt/eurocrypt2023/27/slides.pdf'
-citation: 'J Lai, G Zeng, Z Huang, SM Yiu, X Mu, J Weng. Asymmetric group message franking: Definitions and constructions. EUROCRYPT 2023'
+citation: 'J Lai, G Zeng, Z Huang, SM Yiu, X Mu, J Weng. Asymmetric group message franking: definitions and constructions. EUROCRYPT 2023'
 ---
 As online group communication scenarios become more and more common these years,  malicious or unpleasant messages are much easier to spread on the internet. Message franking is a crucial cryptographic mechanism designed for content moderation in online end-to-end messaging systems, allowing the receiver of a malicious message to report the message to the moderator. Unfortunately, the existing message franking schemes  only consider  1-1 communication scenarios. 
 	

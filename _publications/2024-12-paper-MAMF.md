@@ -9,7 +9,7 @@ venue: 'ASIACRYPT 2024'
 paperurl: 'https://eprint.iacr.org/2024/1608'
 slidesurl: 'https://iacr.org/submit/files/slides/2024/asiacrypt/asiacrypt2024/46/46_slides.pdf'
 
-citation: 'Z Huang, J Lai, G Zeng, J Weng. Mild Asymmetric Message Franking: Illegal-Messages-Only and Retrospective Content Moderation. ASIACRYPT 2024.'
+citation: 'Z Huang, J Lai, G Zeng, J Weng. Mild asymmetric message franking: illegal-messages-only and retrospective content moderation. ASIACRYPT 2024.'
 ---
 
 Many messaging platforms have integrated end-to-end (E2E) encryption into their services. This widespread adoption of E2E encryption has triggered a technical tension between user privacy and illegal content moderation. The existing solutions either support only unframeability or deniability, or they are prone to abuse (the moderator can perform content moderation for all messages, whether illegal or not), or they lack mechanisms for retrospective content moderation.

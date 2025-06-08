@@ -1,5 +1,5 @@
 ---
-title: "Strongly nonoutsourceable scratch-off puzzles in blockchain"
+title: "Strongly Nonoutsourceable Scratch-Off Puzzles in Blockchain"
 collection: publications
 category: manuscripts
 permalink: /publication/2023-07-04-paper-puzzle

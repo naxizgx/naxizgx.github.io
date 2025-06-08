@@ -9,7 +9,7 @@ venue: 'ASIACRYPT 2023'
 paperurl: 'https://eprint.iacr.org/2023/1759'
 slidesurl: 'https://iacr.org/submit/files/slides/2023/asiacrypt/asiacrypt2023/265/slides.pdf'
 
-citation: 'G Zeng, J Lai, Z Huang, L Zhang, X Wang, KY Lam, H Wang, J Weng. Non-interactive Zero-Knowledge Functional Proofs. ASIACRYPT 2023.'
+citation: 'G Zeng, J Lai, Z Huang, L Zhang, X Wang, KY Lam, H Wang, J Weng. Non-interactive zero-knowledge functional proofs. ASIACRYPT 2023.'
 ---
 
 In this paper, we consider to generalize NIZK by empowering a prover to share a witness in a fine-grained manner with verifiers. Roughly, the prover is able to authorize a verifier to obtain extra information of witness, i.e., besides verifying the truth of the statement, the verifier can additionally obtain certain function  of the witness from the accepting proof using a secret functional key provided by the prover. 
