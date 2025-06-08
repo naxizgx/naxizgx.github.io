@@ -2,7 +2,7 @@
 title: "A New Privacy-Preserving Searching Model on Blockchain"
 collection: publications
 category: conferences
-permalink: /publication/2018-11-paper-search-model
+permalink: /publication/2018-11-paper-search
 excerpt: 'This paper is about a new privacy-preserving searching model based on blockchain.'
 date: 2018-10-28
 venue: 'ICISC 2018'
