@@ -1,5 +1,5 @@
 ---
-title: "Computational complexity theory, Fall, 2025"
+title: "Computational complexity, Fall, 2025"
 collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/2025-fall-teaching-01
