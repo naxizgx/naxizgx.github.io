@@ -7,7 +7,7 @@ excerpt: 'This paper is about the message franking in group communication scenar
 date: 2023-04-16
 venue: 'EUROCRYPT 2023'
 
-paperurl: '[PDF](https://eprint.iacr.org/2023/332.pdf)'
+paperurl: 'https://eprint.iacr.org/2023/332.pdf'
 slidesurl: 'https://iacr.org/submit/files/slides/2023/eurocrypt/eurocrypt2023/27/slides.pdf'
 citation: 'J Lai, G Zeng, Z Huang, SM Yiu, X Mu, J Weng. Asymmetric group message franking: definitions and constructions. EUROCRYPT 2023'
 ---
