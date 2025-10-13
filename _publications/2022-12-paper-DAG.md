@@ -7,7 +7,7 @@ excerpt: 'This paper is about the composition of Sigma protocols for relations i
 
 date: 2022-12-05
 venue: 'ASIACRYPT 2022'
-paperurl: '[PDF](https://eprint.iacr.org/2022/1569.pdf)'
+paperurl: 'https://eprint.iacr.org/2022/1569'
 slidesurl: 'https://iacr.org/submit/files/slides/2022/asiacrypt/asiacrypt2022/276/slides.pdf'
 citation: 'G Zeng, J Lai, Z Huang, Y Wang, Z Zheng. DAG-Σ: A DAG-based Sigma protocol for relations in CNF. ASIACRYPT 2022'
 ---
