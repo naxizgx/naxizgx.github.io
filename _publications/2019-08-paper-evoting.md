@@ -7,7 +7,7 @@ excerpt: 'This paper is about a self-tallying e-voting scheme based on blockchai
 
 date: 2019-01-25
 venue: 'WISA 2019'
-paperurl: '[PDF](https://link.springer.com/chapter/10.1007/978-3-030-39303-8_6)'
+paperurl: 'https://link.springer.com/chapter/10.1007/978-3-030-39303-8_6'
 # slidesurl: 'https://iacr.org/submit/files/slides/2022/asiacrypt/asiacrypt2022/276/slides.pdf'
 citation: 'G Zeng, M He, SM Yiu. A secure and self-tallying e-voting system based on blockchain. WISA 2019'
 ---

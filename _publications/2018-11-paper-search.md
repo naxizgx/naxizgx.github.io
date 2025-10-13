@@ -6,7 +6,7 @@ permalink: /publication/2018-11-paper-search
 excerpt: 'This paper is about a new privacy-preserving searching model based on blockchain.'
 date: 2018-10-28
 venue: 'ICISC 2018'
-paperurl: '[PDF](https://s3.ap-northeast-2.amazonaws.com/journal-home/site/icisc/icisc_journals/paper_5_3_he.pdf)'
+paperurl: 'https://s3.ap-northeast-2.amazonaws.com/journal-home/site/icisc/icisc_journals/paper_5_3_he.pdf'
 # slidesurl: 'https://iacr.org/submit/files/slides/2022/asiacrypt/asiacrypt2022/276/slides.pdf'
 # bibtexurl: 'https://scholar.googleusercontent.com/scholar.bib?q=info:-kgwhf-vZj0J:scholar.google.com/&output=citation&scisdr=CgJAQfLTELXe2_FlMJU:AAZF9b8AAAAAaERjKJXUyTRugMz_G-RQv-ahaoM&scisig=AAZF9b8AAAAAaERjKF22dJFzYpR1CicIvXUz9rs&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1'
 citation: 'M He, G Zeng, J Zhang, L Zhang, Y Chen, SM Yiu. A new privacy-preserving searching model on blockchain. ICISC 2018.'

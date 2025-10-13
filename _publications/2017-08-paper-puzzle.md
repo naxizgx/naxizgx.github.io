@@ -7,7 +7,7 @@ excerpt: 'This paper is about nonoutsourceable puzzle in blockchain.'
 
 date: 2017-08-27
 venue: 'PST 2017'
-paperurl: '[PDF](https://ieeexplore.ieee.org/abstract/document/8476876/)'
+paperurl: 'https://ieeexplore.ieee.org/abstract/document/8476876/'
 # slidesurl: 'https://iacr.org/submit/files/slides/2022/asiacrypt/asiacrypt2022/276/slides.pdf'
 citation: 'G Zeng, SM Yiu, J Zhang, H Kuzuno, MH Au. A nonoutsourceable puzzle under GHOST rule. PST 2017'
 ---
