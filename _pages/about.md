@@ -12,7 +12,7 @@ I received a BEng in Information Security from Huazhong University of Science an
 
 ## Research Interests
 
-Zero knowledge, communication security and authentication
+Zero knowledge, communication security and authentication, content moderation
 
 * Looking for Postdoc, PhD/Postgraduate students, and RAs to work with me at SYSU, Shenzhen Campus.
 
