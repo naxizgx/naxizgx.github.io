@@ -185,10 +185,12 @@
     items.forEach(function(item) {
       var wrapper = document.createElement('div');
       wrapper.className = 'pub-item';
-      wrapper.setAttribute('data-date', item.getAttribute('data-date'));
-      wrapper.setAttribute('data-venue', item.getAttribute('data-venue'));
+      // data-date and data-venue are on the parent .list__item, not .archive__item
+      var parent = item.parentNode;
+      wrapper.setAttribute('data-date', parent.getAttribute('data-date'));
+      wrapper.setAttribute('data-venue', parent.getAttribute('data-venue'));
       wrapper.appendChild(item);
-      item.parentNode.replaceChild(wrapper, item);
+      parent.replaceChild(wrapper, item);
     });
   }
 
