@@ -12,9 +12,6 @@ author_profile: true
 {% include base_path %}
 
 <!-- Publication Filters -->
-<div id="pub-filters">
-  <div id="pub-count" style="margin-bottom: 1em; color: #666;"></div>
-</div>
 <div id="pub-content">
   <div id="pub-sidebar">
     <div class="filter-section">
@@ -160,7 +157,6 @@ author_profile: true
 
   function applyFilters() {
     var items = document.querySelectorAll('.pub-item-wrapper');
-    var visibleCount = 0;
 
     items.forEach(function(item) {
       var matches = true;
@@ -179,7 +175,6 @@ author_profile: true
 
       if (matches) {
         item.style.display = '';
-        visibleCount++;
       } else {
         item.style.display = 'none';
       }
@@ -200,11 +195,6 @@ author_profile: true
         section.style.display = 'none';
       }
     });
-
-    var countEl = document.getElementById('pub-count');
-    if (countEl) {
-      countEl.textContent = visibleCount + ' publications found';
-    }
   }
 
   function attachEventListeners() {
