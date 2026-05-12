@@ -36,7 +36,8 @@ author:
   # arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : "https://scholar.google.com/citations?user=oWUWOuYAAAAJ&hl=en"
   # impactstory      : # URL
-  # orcid            : # URL
+  #  orcid            : # URL
+  dblp             : "https://dblp.uni-trier.de/pid/197/8780.html"
   # semantic         : # URL
   # pubmed           : # URL
   # researchgate     : # URL
