@@ -16,7 +16,55 @@ author_profile: true
   <div id="pub-count" style="margin-bottom: 1em; color: #666;"></div>
 </div>
 <div id="pub-content">
-  <div id="pub-sidebar"></div>
+  <div id="pub-sidebar">
+    <div class="filter-section">
+      <div class="filter-section-header">refine by year</div>
+      <ul class="filter-items">
+        <li class="filter-item active">All Years <span class="filter-count">({{ site.publications | size }})</span></li>
+        {% assign years = "" | split: "" %}
+        {% for pub in site.publications %}
+          {% assign year = pub.date | date: "%Y" %}
+          {% unless years contains year %}
+            {% assign years = years | push: year %}
+          {% endunless %}
+        {% endfor %}
+        {% assign years = years | sort | reverse %}
+        {% for year in years %}
+          {% assign count = 0 %}
+          {% for pub in site.publications %}
+            {% if pub.date | date: "%Y" == year %}
+              {% assign count = count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          <li class="filter-item">{{ year }} <span class="filter-count">({{ count }})</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="filter-section">
+      <div class="filter-section-header">refine by venue</div>
+      <ul class="filter-items">
+        <li class="filter-item active">All Venues <span class="filter-count">({{ site.publications | size }})</span></li>
+        {% assign venues = "" | split: "" %}
+        {% for pub in site.publications %}
+          {% assign venue_name = pub.venue | split: " " | first %}
+          {% unless venues contains venue_name %}
+            {% assign venues = venues | push: venue_name %}
+          {% endunless %}
+        {% endfor %}
+        {% assign venues = venues | sort %}
+        {% for venue in venues %}
+          {% assign count = 0 %}
+          {% for pub in site.publications %}
+            {% assign pub_venue_name = pub.venue | split: " " | first %}
+            {% if pub_venue_name == venue %}
+              {% assign count = count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          <li class="filter-item">{{ venue }} <span class="filter-count">({{ count }})</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
   <div id="pub-list">
 
 <!-- New style rendering if publication categories are defined -->
@@ -41,7 +89,5 @@ author_profile: true
 {% endif %}
 
 </div>
-</div>
-
 </div>
 
