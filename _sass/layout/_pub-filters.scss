@@ -1,0 +1,58 @@
+/* ==========================================================================
+   PUBLICATION FILTERS
+   ========================================================================== */
+
+#pub-filters {
+  margin-bottom: 2em;
+  padding: 1em;
+  background: var(--global-bg-color);
+  border-radius: 4px;
+}
+
+.filter-group {
+  margin-bottom: 0.75em;
+}
+
+.filter-group:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  font-weight: 600;
+  color: var(--global-text-color);
+  font-size: 0.9em;
+  margin-right: 0.5em;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+.filter-btn {
+  padding: 0.3em 0.8em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--global-text-color);
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+.filter-btn:hover {
+  border-color: var(--global-link-color);
+  color: var(--global-link-color);
+}
+
+.filter-btn.active {
+  background: var(--global-link-color);
+  border-color: var(--global-link-color);
+  color: #fff;
+}
+
+#pub-count {
+  font-size: 0.9em;
+}

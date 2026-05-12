@@ -11,6 +11,12 @@ author_profile: true
 
 {% include base_path %}
 
+<!-- Publication Filters -->
+<div id="pub-filters">
+  <div id="pub-count" style="margin-bottom: 1em; color: #666;"></div>
+</div>
+<div id="pub-list">
+
 <!-- New style rendering if publication categories are defined -->
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
@@ -31,6 +37,8 @@ author_profile: true
     {% include archive-single.html %}
   {% endfor %}
 {% endif %}
+
+</div>
 
 
 
