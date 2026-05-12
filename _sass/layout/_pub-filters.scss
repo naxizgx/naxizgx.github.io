@@ -11,6 +11,11 @@
   gap: 2em;
   align-items: flex-start;
   flex-direction: row-reverse;
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 #pub-sidebar {
@@ -83,11 +88,4 @@
 #pub-count {
   font-size: 0.9em;
   color: var(--global-text-color-light);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  #pub-content {
-    flex-direction: column;
-  }
 }
