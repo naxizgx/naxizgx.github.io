@@ -10,11 +10,17 @@
   display: flex;
   gap: 2em;
   align-items: flex-start;
-  flex-direction: row-reverse;
+  flex-direction: row-reverse !important;
   position: relative;
+}
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+#pub-content.mobile-layout {
+  flex-direction: column !important;
+}
+
+@media (max-width: 768px) {
+  #pub-content {
+    flex-direction: column !important;
   }
 }
 
