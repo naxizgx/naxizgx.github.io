@@ -19,8 +19,8 @@ author_profile: true
   <div id="pub-sidebar">
     <div class="filter-section">
       <div class="filter-section-header">refine by year</div>
-      <ul class="filter-items">
-        <li class="filter-item active">All Years <span class="filter-count">({{ site.publications | size }})</span></li>
+      <ul class="filter-items" id="year-filters">
+        <li class="filter-item active" data-filter="all">All Years <span class="filter-count">({{ site.publications | size }})</span></li>
         {% assign years = "" | split: "" %}
         {% for pub in site.publications %}
           {% assign year = pub.date | date: "%Y" %}
@@ -32,62 +32,206 @@ author_profile: true
         {% for year in years %}
           {% assign count = 0 %}
           {% for pub in site.publications %}
-            {% if pub.date | date: "%Y" == year %}
+            {% assign pub_year = pub.date | date: "%Y" %}
+            {% if pub_year == year %}
               {% assign count = count | plus: 1 %}
             {% endif %}
           {% endfor %}
-          <li class="filter-item">{{ year }} <span class="filter-count">({{ count }})</span></li>
+          <li class="filter-item" data-filter="{{ year }}">{{ year }} <span class="filter-count">({{ count }})</span></li>
         {% endfor %}
       </ul>
     </div>
     <div class="filter-section">
       <div class="filter-section-header">refine by venue</div>
-      <ul class="filter-items">
-        <li class="filter-item active">All Venues <span class="filter-count">({{ site.publications | size }})</span></li>
+      <ul class="filter-items" id="venue-filters">
+        <li class="filter-item active" data-filter="all">All Venues <span class="filter-count">({{ site.publications | size }})</span></li>
         {% assign venues = "" | split: "" %}
         {% for pub in site.publications %}
-          {% assign venue_name = pub.venue | split: " " | first %}
-          {% unless venues contains venue_name %}
-            {% assign venues = venues | push: venue_name %}
+          {% assign raw_venue = pub.venue %}
+          {% assign normalized_venue = raw_venue %}
+          {% if raw_venue contains "Designs, Codes and Cryptography" %}
+            {% assign normalized_venue = "Designs, Codes and Cryptography" %}
+          {% elsif raw_venue contains "Soft Computing" %}
+            {% assign normalized_venue = "Soft Computing" %}
+          {% elsif raw_venue contains "The Computer Journal" %}
+            {% assign normalized_venue = "The Computer Journal" %}
+          {% elsif raw_venue contains "Chinese Journal of Computers" %}
+            {% assign normalized_venue = "Chinese Journal of Computers" %}
+          {% elsif raw_venue contains "IEEE Transactions on Vehicular" %}
+            {% assign normalized_venue = "IEEE Transactions on Vehicular" %}
+          {% elsif raw_venue contains "Journal of Computer Security" %}
+            {% assign normalized_venue = "Journal of Computer Security" %}
+          {% elsif raw_venue contains "ASIACRYPT" %}
+            {% assign normalized_venue = "ASIACRYPT" %}
+          {% elsif raw_venue contains "EUROCRYPT" %}
+            {% assign normalized_venue = "EUROCRYPT" %}
+          {% elsif raw_venue contains "ICISC" %}
+            {% assign normalized_venue = "ICISC" %}
+          {% elsif raw_venue contains "WISA" %}
+            {% assign normalized_venue = "WISA" %}
+          {% elsif raw_venue contains "PST" %}
+            {% assign normalized_venue = "PST" %}
+          {% endif %}
+          {% unless venues contains normalized_venue %}
+            {% assign venues = venues | push: normalized_venue %}
           {% endunless %}
         {% endfor %}
         {% assign venues = venues | sort %}
         {% for venue in venues %}
           {% assign count = 0 %}
           {% for pub in site.publications %}
-            {% assign pub_venue_name = pub.venue | split: " " | first %}
-            {% if pub_venue_name == venue %}
+            {% assign raw_venue = pub.venue %}
+            {% assign normalized_venue = raw_venue %}
+            {% if raw_venue contains "Designs, Codes and Cryptography" %}
+              {% assign normalized_venue = "Designs, Codes and Cryptography" %}
+            {% elsif raw_venue contains "Soft Computing" %}
+              {% assign normalized_venue = "Soft Computing" %}
+            {% elsif raw_venue contains "The Computer Journal" %}
+              {% assign normalized_venue = "The Computer Journal" %}
+            {% elsif raw_venue contains "Chinese Journal of Computers" %}
+              {% assign normalized_venue = "Chinese Journal of Computers" %}
+            {% elsif raw_venue contains "IEEE Transactions on Vehicular" %}
+              {% assign normalized_venue = "IEEE Transactions on Vehicular" %}
+            {% elsif raw_venue contains "Journal of Computer Security" %}
+              {% assign normalized_venue = "Journal of Computer Security" %}
+            {% elsif raw_venue contains "ASIACRYPT" %}
+              {% assign normalized_venue = "ASIACRYPT" %}
+            {% elsif raw_venue contains "EUROCRYPT" %}
+              {% assign normalized_venue = "EUROCRYPT" %}
+            {% elsif raw_venue contains "ICISC" %}
+              {% assign normalized_venue = "ICISC" %}
+            {% elsif raw_venue contains "WISA" %}
+              {% assign normalized_venue = "WISA" %}
+            {% elsif raw_venue contains "PST" %}
+              {% assign normalized_venue = "PST" %}
+            {% endif %}
+            {% if normalized_venue == venue %}
               {% assign count = count | plus: 1 %}
             {% endif %}
           {% endfor %}
-          <li class="filter-item">{{ venue }} <span class="filter-count">({{ count }})</span></li>
+          {% assign display_venue = venue %}
+          {% if venue == "Designs, Codes and Cryptography" %}
+            {% assign display_venue = "DCC" %}
+          {% endif %}
+          <li class="filter-item" data-filter="{{ venue | escape }}">{{ display_venue }} <span class="filter-count">({{ count }})</span></li>
         {% endfor %}
       </ul>
     </div>
   </div>
   <div id="pub-list">
 
-<!-- New style rendering if publication categories are defined -->
 {% if site.publication_category %}
-  {% for category in site.publication_category  %}
+  {% for category in site.publication_category %}
     {% assign title_shown = false %}
     {% for post in site.publications reversed %}
       {% if post.category != category[0] %}
         {% continue %}
       {% endif %}
       {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
+        <div class="category-section" data-category="{{ category[0] }}">
+          <h2>{{ category[1].title }}</h2><hr />
         {% assign title_shown = true %}
       {% endunless %}
-      {% include archive-single.html %}
+      <div class="pub-item-wrapper" data-year="{{ post.date | date: "%Y" }}" data-venue="{% assign raw_venue = post.venue %}{% if raw_venue contains "Designs, Codes and Cryptography" %}Designs, Codes and Cryptography{% elsif raw_venue contains "Soft Computing" %}Soft Computing{% elsif raw_venue contains "The Computer Journal" %}The Computer Journal{% elsif raw_venue contains "Chinese Journal of Computers" %}Chinese Journal of Computers{% elsif raw_venue contains "IEEE Transactions on Vehicular" %}IEEE Transactions on Vehicular{% elsif raw_venue contains "Journal of Computer Security" %}Journal of Computer Security{% elsif raw_venue contains "ASIACRYPT" %}ASIACRYPT{% elsif raw_venue contains "EUROCRYPT" %}EUROCRYPT{% elsif raw_venue contains "ICISC" %}ICISC{% elsif raw_venue contains "WISA" %}WISA{% elsif raw_venue contains "PST" %}PST{% else %}{{ raw_venue }}{% endif %}" data-category="{{ post.category }}">
+        {% include archive-single.html %}
+      </div>
     {% endfor %}
+    {% if title_shown %}
+      </div>
+    {% endif %}
   {% endfor %}
 {% else %}
   {% for post in site.publications reversed %}
-    {% include archive-single.html %}
+    <div class="pub-item-wrapper" data-year="{{ post.date | date: "%Y" }}" data-venue="{% assign raw_venue = post.venue %}{% if raw_venue contains "Designs, Codes and Cryptography" %}Designs, Codes and Cryptography{% elsif raw_venue contains "Soft Computing" %}Soft Computing{% elsif raw_venue contains "The Computer Journal" %}The Computer Journal{% elsif raw_venue contains "Chinese Journal of Computers" %}Chinese Journal of Computers{% elsif raw_venue contains "IEEE Transactions on Vehicular" %}IEEE Transactions on Vehicular{% elsif raw_venue contains "Journal of Computer Security" %}Journal of Computer Security{% elsif raw_venue contains "ASIACRYPT" %}ASIACRYPT{% elsif raw_venue contains "EUROCRYPT" %}EUROCRYPT{% elsif raw_venue contains "ICISC" %}ICISC{% elsif raw_venue contains "WISA" %}WISA{% elsif raw_venue contains "PST" %}PST{% else %}{{ raw_venue }}{% endif %}">
+      {% include archive-single.html %}
+    </div>
   {% endfor %}
 {% endif %}
 
 </div>
 </div>
 
+<script>
+(function() {
+  'use strict';
+
+  var yearFilter = 'all';
+  var venueFilter = 'all';
+
+  function applyFilters() {
+    var items = document.querySelectorAll('.pub-item-wrapper');
+    var visibleCount = 0;
+
+    items.forEach(function(item) {
+      var matches = true;
+
+      if (yearFilter !== 'all') {
+        if (item.getAttribute('data-year') !== yearFilter) {
+          matches = false;
+        }
+      }
+
+      if (venueFilter !== 'all') {
+        if (item.getAttribute('data-venue') !== venueFilter) {
+          matches = false;
+        }
+      }
+
+      if (matches) {
+        item.style.display = '';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    var categorySections = document.querySelectorAll('.category-section');
+    categorySections.forEach(function(section) {
+      var categoryItems = section.querySelectorAll('.pub-item-wrapper');
+      var hasVisibleItem = false;
+      categoryItems.forEach(function(item) {
+        if (item.style.display !== 'none') {
+          hasVisibleItem = true;
+        }
+      });
+      if (hasVisibleItem) {
+        section.style.display = '';
+      } else {
+        section.style.display = 'none';
+      }
+    });
+
+    var countEl = document.getElementById('pub-count');
+    if (countEl) {
+      countEl.textContent = visibleCount + ' publications found';
+    }
+  }
+
+  function attachEventListeners() {
+    var yearFilters = document.querySelectorAll('#year-filters .filter-item');
+    yearFilters.forEach(function(item) {
+      item.addEventListener('click', function() {
+        yearFilters.forEach(function(el) { el.classList.remove('active'); });
+        item.classList.add('active');
+        yearFilter = item.getAttribute('data-filter');
+        applyFilters();
+      });
+    });
+
+    var venueFilters = document.querySelectorAll('#venue-filters .filter-item');
+    venueFilters.forEach(function(item) {
+      item.addEventListener('click', function() {
+        venueFilters.forEach(function(el) { el.classList.remove('active'); });
+        item.classList.add('active');
+        venueFilter = item.getAttribute('data-filter');
+        applyFilters();
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    attachEventListeners();
+    applyFilters();
+  });
+})();
+</script>
