@@ -1,37 +1,8 @@
-// Publication filter for xian.github.io
+// Publication filter for xian.github.io (DBLP style)
 // Filters publications by year and venue
 
 (function() {
   'use strict';
-
-  // Available filter groups
-  var filters = {
-    years: [
-      { label: 'All Years', value: 'all' },
-      { label: '2024', value: '2024' },
-      { label: '2023', value: '2023' },
-      { label: '2022', value: '2022' },
-      { label: '2021', value: '2021' },
-      { label: '2020+', value: '2020+' },
-      { label: '2018', value: '2018' },
-      { label: '2017', value: '2017' }
-    ],
-    venues: [
-      { label: 'All Venues', value: 'all' },
-      { label: 'ASIACRYPT', value: 'asiacrypt' },
-      { label: 'EUROCRYPT', value: 'eurocrypt' },
-      { label: 'DCC', value: 'dcc' },
-      { label: 'Other', value: 'other' }
-    ]
-  };
-
-  // Venue name mapping
-  var venueMap = {
-    'asiacrypt': ['asiacrypt', 'asiacrypt 2024', 'asiacrypt 2023', 'asiacrypt 2022'],
-    'eurocrypt': ['eurocrypt', 'eurocrypt 2023'],
-    'dcc': ['dcc'],
-    'other': ['icisc', 'the computer journal', 'dcc 91(4)', 'journal']
-  };
 
   // Parse venue from venue string
   function parseVenue(venue) {
@@ -51,6 +22,7 @@
   // Check if a publication matches the current filters
   function matchesFilter(pub, yearFilter, venueFilter) {
     var pubYear = parseYear(pub.date);
+    var pubVenue = parseVenue(pub.venue);
 
     // Year filter
     if (yearFilter !== 'all') {
@@ -63,71 +35,132 @@
 
     // Venue filter
     if (venueFilter !== 'all') {
-      var pubVenue = parseVenue(pub.venue);
       if (pubVenue !== venueFilter) return false;
     }
 
     return true;
   }
 
-  // Build filter UI
-  function buildFilters() {
-    var container = document.getElementById('pub-filters');
-    if (!container) return;
+  // Build filter data from publications
+  function buildFilterData() {
+    var publications = document.querySelectorAll('.pub-item');
+    var yearCounts = {};
+    var venueCounts = {};
 
-    // Year filters
+    publications.forEach(function(pub) {
+      var year = parseYear(pub.getAttribute('data-date'));
+      var venue = parseVenue(pub.getAttribute('data-venue'));
+      yearCounts[year] = (yearCounts[year] || 0) + 1;
+      venueCounts[venue] = (venueCounts[venue] || 0) + 1;
+    });
+
+    return { yearCounts: yearCounts, venueCounts: venueCounts };
+  }
+
+  // Build sidebar
+  function buildSidebar(filterData) {
+    var sidebar = document.getElementById('pub-sidebar');
+    if (!sidebar) return;
+
+    // Year filter section
     var yearSection = document.createElement('div');
-    yearSection.className = 'filter-group';
-    yearSection.innerHTML = '<span class="filter-label">Year:</span>';
-    var yearGroup = document.createElement('div');
-    yearGroup.className = 'filter-buttons';
-    filters.years.forEach(function(f) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'filter-btn active';
-      btn.dataset.filter = f.value;
-      btn.textContent = f.label;
-      btn.addEventListener('click', function() {
-        yearGroup.querySelectorAll('.filter-btn').forEach(function(b) {
-          b.classList.remove('active');
-        });
-        btn.classList.add('active');
-        applyFilters();
-      });
-      yearGroup.appendChild(btn);
-    });
-    yearSection.appendChild(yearGroup);
-    container.appendChild(yearSection);
+    yearSection.className = 'filter-section';
+    var yearHeader = document.createElement('div');
+    yearHeader.className = 'filter-section-header';
+    yearHeader.textContent = 'refine by year';
+    yearSection.appendChild(yearHeader);
 
-    // Venue filters
+    var yearList = document.createElement('ul');
+    yearList.className = 'filter-items';
+
+    var allYearItem = document.createElement('li');
+    allYearItem.className = 'filter-item active';
+    allYearItem.dataset.filter = 'all';
+    allYearItem.innerHTML = 'All Years <span class="filter-count">(' + document.querySelectorAll('.pub-item').length + ')</span>';
+    yearList.appendChild(allYearItem);
+
+    var years = Object.keys(filterData.yearCounts).sort(function(a, b) { return b - a; });
+    years.forEach(function(year) {
+      var item = document.createElement('li');
+      item.className = 'filter-item';
+      item.dataset.filter = year;
+      item.innerHTML = year + ' <span class="filter-count">(' + filterData.yearCounts[year] + ')</span>';
+      yearList.appendChild(item);
+    });
+
+    yearSection.appendChild(yearList);
+    sidebar.appendChild(yearSection);
+
+    // Venue filter section
     var venueSection = document.createElement('div');
-    venueSection.className = 'filter-group';
-    venueSection.innerHTML = '<span class="filter-label">Venue:</span>';
-    var venueGroup = document.createElement('div');
-    venueGroup.className = 'filter-buttons';
-    filters.venues.forEach(function(f) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'filter-btn active';
-      btn.dataset.filter = f.value;
-      btn.textContent = f.label;
-      btn.addEventListener('click', function() {
-        venueGroup.querySelectorAll('.filter-btn').forEach(function(b) {
+    venueSection.className = 'filter-section';
+    var venueHeader = document.createElement('div');
+    venueHeader.className = 'filter-section-header';
+    venueHeader.textContent = 'refine by venue';
+    venueSection.appendChild(venueHeader);
+
+    var venueList = document.createElement('ul');
+    venueList.className = 'filter-items';
+
+    var allVenueItem = document.createElement('li');
+    allVenueItem.className = 'filter-item active';
+    allVenueItem.dataset.filter = 'all';
+    allVenueItem.innerHTML = 'All Venues <span class="filter-count">(' + document.querySelectorAll('.pub-item').length + ')</span>';
+    venueList.appendChild(allVenueItem);
+
+    var venueNames = {
+      'asiacrypt': 'ASIACRYPT',
+      'eurocrypt': 'EUROCRYPT',
+      'dcc': 'DCC',
+      'other': 'Other'
+    };
+
+    var venues = Object.keys(filterData.venueCounts).sort(function(a, b) {
+      return filterData.venueCounts[b] - filterData.venueCounts[a];
+    });
+
+    venues.forEach(function(venue) {
+      var item = document.createElement('li');
+      item.className = 'filter-item';
+      item.dataset.filter = venue;
+      item.innerHTML = venueNames[venue] + ' <span class="filter-count">(' + filterData.venueCounts[venue] + ')</span>';
+      venueList.appendChild(item);
+    });
+
+    venueSection.appendChild(venueList);
+    sidebar.appendChild(venueSection);
+  }
+
+  // Attach click handlers
+  function attachHandlers() {
+    var yearSection = document.querySelector('.filter-section:first-child');
+    var venueSection = document.querySelector('.filter-section:last-child');
+
+    yearSection.querySelectorAll('.filter-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        yearSection.querySelectorAll('.filter-item').forEach(function(b) {
           b.classList.remove('active');
         });
-        btn.classList.add('active');
+        item.classList.add('active');
         applyFilters();
       });
-      venueGroup.appendChild(btn);
     });
-    venueSection.appendChild(venueGroup);
-    container.appendChild(venueSection);
+
+    venueSection.querySelectorAll('.filter-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        venueSection.querySelectorAll('.filter-item').forEach(function(b) {
+          b.classList.remove('active');
+        });
+        item.classList.add('active');
+        applyFilters();
+      });
+    });
   }
 
   // Apply filters
   function applyFilters() {
-    var yearFilter = document.querySelector('.filter-group:first-child .filter-btn.active').dataset.filter;
-    var venueFilter = document.querySelector('.filter-group:last-child .filter-btn.active').dataset.filter;
+    var yearFilter = yearSection.querySelector('.filter-item.active').dataset.filter;
+    var venueFilter = venueSection.querySelector('.filter-item.active').dataset.filter;
     var publications = document.querySelectorAll('.pub-item');
     var visibleCount = 0;
 
@@ -137,7 +170,6 @@
       if (matches) visibleCount++;
     });
 
-    // Update count
     var countEl = document.getElementById('pub-count');
     if (countEl) {
       countEl.textContent = visibleCount + ' publications found';
@@ -153,6 +185,8 @@
     items.forEach(function(item) {
       var wrapper = document.createElement('div');
       wrapper.className = 'pub-item';
+      wrapper.setAttribute('data-date', item.getAttribute('data-date'));
+      wrapper.setAttribute('data-venue', item.getAttribute('data-venue'));
       wrapper.appendChild(item);
       item.parentNode.replaceChild(wrapper, item);
     });
@@ -161,8 +195,16 @@
   // Initialize
   function init() {
     wrapPublications();
-    buildFilters();
+    var filterData = buildFilterData();
+    buildSidebar(filterData);
+    attachHandlers();
     applyFilters();
+
+    // Store refs for applyFilters
+    var yearSection = document.querySelector('.filter-section:first-child');
+    var venueSection = document.querySelector('.filter-section:last-child');
+    window._pubYearSection = yearSection;
+    window._pubVenueSection = venueSection;
   }
 
   // Run when DOM is ready

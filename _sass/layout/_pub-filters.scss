@@ -1,58 +1,107 @@
 /* ==========================================================================
-   PUBLICATION FILTERS
+   PUBLICATION FILTERS (DBLP style)
    ========================================================================== */
 
 #pub-filters {
-  margin-bottom: 2em;
-  padding: 1em;
-  background: var(--global-bg-color);
-  border-radius: 4px;
+  margin-bottom: 1.5em;
 }
 
-.filter-group {
-  margin-bottom: 0.75em;
+#pub-content {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
 }
 
-.filter-group:last-child {
+#pub-sidebar {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 20px;
+}
+
+#pub-list {
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-section {
+  margin-bottom: 1.2em;
+}
+
+.filter-section:last-child {
   margin-bottom: 0;
 }
 
-.filter-label {
+.filter-section-header {
+  font-size: 0.85em;
   font-weight: 600;
   color: var(--global-text-color);
+  margin-bottom: 0.4em;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.filter-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-item {
+  display: block;
+  padding: 0.25em 0.6em;
+  margin: 0.15em 0;
   font-size: 0.9em;
-  margin-right: 0.5em;
-}
-
-.filter-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4em;
-}
-
-.filter-btn {
-  padding: 0.3em 0.8em;
-  border: 1px solid var(--global-border-color);
-  border-radius: 20px;
-  background: transparent;
   color: var(--global-text-color);
-  font-size: 0.85em;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-family: inherit;
+  border-radius: 3px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  line-height: 1.4;
 }
 
-.filter-btn:hover {
-  border-color: var(--global-link-color);
-  color: var(--global-link-color);
+.filter-item:hover {
+  background-color: var(--global-border-color);
 }
 
-.filter-btn.active {
-  background: var(--global-link-color);
-  border-color: var(--global-link-color);
+.filter-item.active {
+  background-color: var(--global-link-color);
   color: #fff;
+  font-weight: 500;
+}
+
+.filter-count {
+  color: var(--global-text-color-light);
+  font-size: 0.85em;
+  margin-left: 0.2em;
+}
+
+.filter-item.active .filter-count {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 #pub-count {
   font-size: 0.9em;
+  color: var(--global-text-color-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #pub-content {
+    flex-direction: column;
+  }
+
+  #pub-sidebar {
+    flex: none;
+    position: static;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+
+  .filter-section {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 200px;
+  }
 }
