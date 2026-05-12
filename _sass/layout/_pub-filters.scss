@@ -10,6 +10,7 @@
   display: flex;
   gap: 2em;
   align-items: flex-start;
+  flex-direction: row-reverse;
 }
 
 #pub-sidebar {
@@ -88,20 +89,5 @@
 @media (max-width: 768px) {
   #pub-content {
     flex-direction: column;
-  }
-
-  #pub-sidebar {
-    flex: none;
-    position: static;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-  }
-
-  .filter-section {
-    margin-bottom: 0;
-    flex: 1;
-    min-width: 200px;
   }
 }
