@@ -1,0 +1,349 @@
+/* ==========================================================================
+   CONTENT
+   --------------------------------------------------------------------------
+   The reading column: page titles, numbered sections, prose rhythm and the
+   small print that carries citations and dates.
+   ========================================================================== */
+
+.page__title,
+.archive > h1 {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-serif);
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.page__title + .page__meta {
+  margin-top: calc(-1 * var(--space-3));
+}
+
+.page__meta {
+  margin: 0 0 var(--space-5);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+}
+
+.page__meta-title,
+.page__related-title,
+.page__share-title {
+  margin: 0 0 var(--space-3);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page__inner-wrap {
+  max-width: var(--measure);
+}
+
+.page__content {
+  font-size: 1em;
+}
+
+.page__content > :first-child {
+  margin-top: 0;
+}
+
+.page__content p,
+.page__content li,
+.page__content dd {
+  font-size: 1em;
+}
+
+/* --------------------------------------------------------------------------
+   Numbered sections: a paper-like index in the margin of every heading.
+   -------------------------------------------------------------------------- */
+
+.page__content h1,
+.page__content h2,
+.archive > h1:not(.page__title),
+.archive > h2:not(.page__title) {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+}
+
+.page__content h1::before,
+.page__content h2::before,
+.archive > h1:not(.page__title)::before,
+.archive > h2:not(.page__title)::before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero);
+  margin-right: var(--space-3);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  vertical-align: 0.12em;
+}
+
+.page__content h3 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h3);
+  font-weight: 650;
+  letter-spacing: -0.005em;
+}
+
+.page__content h4,
+.page__content h5,
+.page__content h6 {
+  font-family: var(--font-sans);
+  font-weight: 650;
+}
+
+.page__content a {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+}
+
+.page__content a:hover,
+.page__content a:focus {
+  text-decoration-color: currentColor;
+}
+
+.page__content ul:not([class]),
+.archive ul:not([class]) {
+  list-style: none;
+  padding-left: 0;
+}
+
+.page__content ul:not([class]) > li:not([class]),
+.archive ul:not([class]) > li:not([class]) {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.page__content ul:not([class]) > li:not([class])::before,
+.archive ul:not([class]) > li:not([class])::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0.25rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  opacity: 0.65;
+}
+
+.page__content ol:not([class]),
+.archive ol:not([class]) {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: item;
+}
+
+.page__content ol:not([class]) > li:not([class]),
+.archive ol:not([class]) > li:not([class]) {
+  position: relative;
+  padding-left: 2.25rem;
+  counter-increment: item;
+}
+
+.page__content ol:not([class]) > li:not([class])::before,
+.archive ol:not([class]) > li:not([class])::before {
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.75;
+  content: counter(item) ".";
+}
+
+/* Nested lists keep their own rhythm without repeating the marker. */
+.page__content ul ul,
+.page__content ol ol,
+.page__content ul ol,
+.page__content ol ul {
+  margin-top: var(--space-2);
+}
+
+.page__content ul ul > li,
+.page__content ol ul > li,
+.page__content ul ol > li,
+.page__content ol ol > li {
+  padding-left: 1.5rem;
+}
+
+.page__content ul ul > li::before {
+  background-color: var(--text-faint);
+}
+
+.page__content ol ol > li::before,
+.page__content ul ol > li::before {
+  counter-increment: none;
+  content: "";
+}
+
+/* --------------------------------------------------------------------------
+   Small print, citations and disclosures
+   -------------------------------------------------------------------------- */
+
+.page__content .small,
+.page__content small {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.7;
+}
+
+.page__content .small a,
+.page__content small a {
+  text-decoration-color: var(--border-strong);
+}
+
+.page__content dt {
+  margin-top: var(--space-5);
+  font-family: var(--font-sans);
+  font-weight: 650;
+}
+
+.page__content dd {
+  margin-left: var(--space-5);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Page hero (kept for pages that opt into a banner)
+   -------------------------------------------------------------------------- */
+
+.page__hero {
+  margin: var(--space-6) auto var(--space-7);
+  max-width: var(--container);
+  padding: 0 var(--space-5);
+}
+
+.page__hero--overlay {
+  padding: var(--space-8) var(--space-5);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-subtle);
+  background-size: cover;
+  background-position: center;
+}
+
+.page__hero-image {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+.page__hero-caption {
+  display: block;
+  margin-top: var(--space-3);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.page__lead {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Taxonomy, related content and paging
+   -------------------------------------------------------------------------- */
+
+.page__taxonomy-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 var(--space-2) var(--space-2) 0;
+  padding: 0.15em 0.7em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.page__taxonomy-item:hover,
+.page__taxonomy-item:focus {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.page__share,
+.page__related {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+}
+
+.pagination--pager {
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Grid and list containers used by archive pages
+   -------------------------------------------------------------------------- */
+
+.grid__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.list__item {
+  margin: 0;
+}
+
+.archive {
+  margin-bottom: var(--space-6);
+}
+
+.archive__subtitle {
+  margin: var(--space-6) 0 0;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Teaching and talk entries are short: a hairline between them is enough. */
+.archive-item {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.archive-item.grid__item {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+@media (max-width: 46em) {
+  .grid__wrapper {
+    grid-template-columns: 1fr;
+  }
+}

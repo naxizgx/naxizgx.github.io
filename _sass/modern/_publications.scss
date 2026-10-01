@@ -1,0 +1,356 @@
+/* ==========================================================================
+   PUBLICATIONS
+   --------------------------------------------------------------------------
+   A reading list of papers with a compact refinement rail on the right. Year and
+   venue are carried as monospace metadata, so a filtered view still reads like a
+   bibliography.
+   ========================================================================== */
+
+#pub-content {
+  display: grid;
+  grid-template-columns: 1fr 13rem;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+#pub-list {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+#pub-sidebar {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: calc(var(--masthead-h) + var(--space-6));
+}
+
+/* --------------------------------------------------------------------------
+   Refinement rail
+   -------------------------------------------------------------------------- */
+
+.filter-section {
+  margin-bottom: var(--space-5);
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.filter-section-header {
+  margin: 0 0 var(--space-2);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filter-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filter-items > li {
+  margin: 0;
+}
+
+.filter-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0.3em 0.6em;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  text-align: left;
+  transition: background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.filter-item:hover,
+.filter-item:focus-visible {
+  background-color: var(--bg-subtle);
+  color: var(--text);
+}
+
+.filter-item.is-active {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.filter-count {
+  color: var(--text-faint);
+  font-size: 0.95em;
+}
+
+.filter-item.is-active .filter-count {
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Section headings
+   -------------------------------------------------------------------------- */
+
+.category-section {
+  margin-top: var(--space-7);
+}
+
+.category-section:first-child {
+  margin-top: 0;
+}
+
+.category-section__title {
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.category-section__title::before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero);
+  margin-right: var(--space-3);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  vertical-align: 0.12em;
+}
+
+/* --------------------------------------------------------------------------
+   Entries
+   -------------------------------------------------------------------------- */
+
+.pub-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pub-item {
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--border);
+}
+
+.pub-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.pub-item.is-hidden {
+  display: none;
+}
+
+.category-section.is-hidden {
+  display: none;
+}
+
+.archive__item-title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.45;
+}
+
+.archive__item-title a {
+  color: var(--text);
+}
+
+.archive__item-title a:hover,
+.archive__item-title a:focus {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.archive__item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+}
+
+.archive__item-venue {
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.archive__item-date {
+  color: var(--text-faint);
+}
+
+.archive__item-excerpt {
+  margin: 0 0 var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}
+
+.archive__item-status {
+  margin: 0 0 var(--space-3);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Per-entry actions and the collapsible citation
+   -------------------------------------------------------------------------- */
+
+.archive__item-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.archive__item-links > li {
+  margin: 0;
+}
+
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.3em 0.85em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background-color: var(--bg-elevated);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.03em;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.pub-link:hover,
+.pub-link:focus {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.archive__item-cite {
+  margin-top: var(--space-3);
+}
+
+.archive__item-cite > summary {
+  display: inline-block;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--dur) var(--ease);
+}
+
+.archive__item-cite > summary::-webkit-details-marker {
+  display: none;
+}
+
+.archive__item-cite > summary:hover,
+.archive__item-cite > summary:focus {
+  color: var(--accent);
+}
+
+.archive__item-cite > summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1em;
+  color: var(--accent);
+}
+
+.archive__item-cite[open] > summary::before {
+  content: "\2212";
+}
+
+.archive__item-cite > p {
+  margin: var(--space-3) 0 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   Grid cards
+   -------------------------------------------------------------------------- */
+
+.archive__item-teaser {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--bg-subtle);
+}
+
+.archive__item-teaser img {
+  display: block;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Narrow-viewport refinement rail
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 60em) {
+  #pub-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  #pub-list,
+  #pub-sidebar {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  #pub-sidebar {
+    position: static;
+    order: -1;
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .filter-items {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .filter-item {
+    width: auto;
+    border-color: var(--border);
+  }
+}

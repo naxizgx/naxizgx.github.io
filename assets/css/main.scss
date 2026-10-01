@@ -2,43 +2,24 @@
 ---
 
 /*
- * This file controls what is imported from /_sass
+ * Stylesheet entry point.
  *
- * Note that the files are processed in the order they are imported, so they are partly
-   sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+ * The presentation layer lives in /_sass/modern and is deliberately small and
+ * self-contained. Font Awesome supplies the interface icons; academicons.css is
+ * loaded separately for the academic profile icons.
  */
 
 @import
-    "vendor/breakpoint/breakpoint",
-
-    "themes",
-    "theme/default",
-    "theme/dark",
-
-    "include/mixins",
-    "vendor/susy/susy",
-
-    "layout/reset",
-    "layout/base",
-
-    "include/utilities",
-    "layout/tables",
-    "layout/buttons",
-    "layout/notices",
-    "layout/masthead",
-    "layout/navigation",
-    "layout/footer",
-    "syntax",
-
-    "layout/forms",
-
-    "layout/page",
-    "layout/archive",
-    "layout/pub-filters",
-    "layout/sidebar",
-
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands",
-    "vendor/magnific-popup/magnific-popup"
+
+    "modern/tokens",
+    "modern/base",
+    "modern/chrome",
+    "modern/profile",
+    "modern/content",
+    "modern/publications",
+    "modern/cv",
+    "modern/syntax"
 ;

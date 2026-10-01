@@ -1,0 +1,149 @@
+/* ==========================================================================
+   CODE HIGHLIGHTING
+   --------------------------------------------------------------------------
+   A small two-tone scheme for Rouge class names. The palette is intentionally
+   narrow so that code reads as the same material as the rest of the page.
+   ========================================================================== */
+
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+  margin-bottom: var(--space-5);
+}
+
+div.highlighter-rouge pre,
+figure.highlight pre {
+  margin: 0;
+}
+
+.highlight {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  color: var(--code-plain);
+}
+
+.highlight table {
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.highlight table td {
+  padding: 0;
+  border: 0;
+}
+
+.highlight table td.gutter {
+  padding-right: var(--space-4);
+  border-right: 1px solid var(--border);
+  color: var(--text-faint);
+  text-align: right;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.highlight table td.code {
+  padding-left: var(--space-4);
+  width: 100%;
+}
+
+.highlight .gl {
+  color: var(--text-faint);
+}
+
+/* Comments */
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs,
+.highlight .cd {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+/* Keywords, declarations, operators */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .ow,
+.highlight .o,
+.highlight .gh {
+  color: var(--code-keyword);
+}
+
+/* Strings, regular expressions, character classes */
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sr,
+.highlight .ss,
+.highlight .sx,
+.highlight .sa,
+.highlight .dl {
+  color: var(--code-string);
+}
+
+/* Numbers and constants */
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .mb,
+.highlight .mx,
+.highlight .no,
+.highlight .bp {
+  color: var(--code-number);
+}
+
+/* Names, builtins, functions, types */
+.highlight .n,
+.highlight .na,
+.highlight .nb,
+.highlight .nc,
+.highlight .nd,
+.highlight .ne,
+.highlight .nf,
+.highlight .ni,
+.highlight .nl,
+.highlight .nn,
+.highlight .nt,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .gu {
+  color: var(--code-name);
+}
+
+/* Punctuation stays quiet */
+.highlight .p,
+.highlight .pi {
+  color: var(--text-muted);
+}
+
+/* Errors and deleted lines */
+.highlight .err,
+.highlight .gd {
+  color: #c0392b;
+}
+
+.highlight .gi {
+  color: #1e8449;
+}
+
+.highlight .gi,
+.highlight .gd {
+  border: 0;
+  background: none;
+}

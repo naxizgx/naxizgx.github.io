@@ -1,0 +1,33 @@
+{%- comment -%}
+Canonical venue label.
+
+Both the refinement facets and the entry metadata resolve venues through this
+single include, so a filter value and the metadata it filters on can never drift
+apart. Pass the raw venue string in `venue`.
+{%- endcomment -%}
+{%- assign raw_venue = include.venue | default: "" -%}
+{%- if raw_venue contains "Designs, Codes and Cryptography" -%}
+Designs, Codes and Cryptography
+{%- elsif raw_venue contains "Soft Computing" -%}
+Soft Computing
+{%- elsif raw_venue contains "The Computer Journal" -%}
+The Computer Journal
+{%- elsif raw_venue contains "Chinese Journal of Computers" -%}
+Chinese Journal of Computers
+{%- elsif raw_venue contains "IEEE Transactions on Vehicular" -%}
+IEEE Transactions on Vehicular Technology
+{%- elsif raw_venue contains "Journal of Computer Security" -%}
+Journal of Computer Security
+{%- elsif raw_venue contains "ASIACRYPT" -%}
+ASIACRYPT
+{%- elsif raw_venue contains "EUROCRYPT" -%}
+EUROCRYPT
+{%- elsif raw_venue contains "ICISC" -%}
+ICISC
+{%- elsif raw_venue contains "WISA" -%}
+WISA
+{%- elsif raw_venue contains "PST" -%}
+PST
+{%- else -%}
+{{ raw_venue }}
+{%- endif -%}

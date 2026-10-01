@@ -1,235 +1,289 @@
-/* CV Template Styles */
+/* ==========================================================================
+   STRUCTURED CV (JSON DATA)
+   --------------------------------------------------------------------------
+   Styles for the CV page generated from _data/cv.json. The colours come from the
+   shared design tokens, with fallbacks so the page also stands on its own.
+   ========================================================================== */
+
 .cv-container {
-  max-width: 1000px;
+  max-width: var(--measure, 46rem);
   margin: 0 auto;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
-  line-height: 1.6;
+  color: var(--text, #1a1c20);
+  font-family: var(--font-sans, sans-serif);
+  font-size: 1em;
+  line-height: var(--lh-prose, 1.75);
 }
 
-/* Header Styles */
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
 .cv-header {
-  margin-bottom: 2rem;
-  border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 1rem;
+  margin-bottom: var(--space-6, 2rem);
+  padding-bottom: var(--space-5, 1.5rem);
+  border-bottom: 1px solid var(--border, #e7e6e2);
 }
 
 .cv-header h1 {
-  margin-bottom: 0.5rem;
-  color: #2a7ae2;
+  margin: 0 0 var(--space-3, 0.75rem);
+  color: var(--text, #1a1c20);
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
+.cv-header .cv-subtitle {
+  margin: 0 0 var(--space-4, 1rem);
+  color: var(--text-muted, #555b64);
+  font-size: 1rem;
+}
+
+.cv-contact,
 .cv-contact-info {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  gap: var(--space-2, 0.5rem) var(--space-5, 1.5rem);
+  margin: 0 0 var(--space-3, 0.75rem);
+  padding: 0;
+  list-style: none;
 }
 
 .cv-contact-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2, 0.5rem);
+  color: var(--text-muted, #555b64);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.78rem);
+}
+
+.cv-contact-item i {
+  color: var(--text-faint, #8a9099);
 }
 
 .cv-profiles {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  gap: var(--space-4, 1rem);
+  margin-top: var(--space-4, 1rem);
+  padding: 0;
+  list-style: none;
 }
 
-.cv-profile-item {
-  display: flex;
+.cv-profile-link {
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2, 0.5rem);
+  padding: 0.3em 0.85em;
+  border: 1px solid var(--border, #e7e6e2);
+  border-radius: var(--radius-pill, 999px);
+  color: var(--text-muted, #555b64);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.78rem);
+  text-decoration: none;
+  transition: border-color 0.18s ease, color 0.18s ease;
 }
 
-.cv-profile-item a {
-  color: #2a7ae2;
+.cv-profile-link:hover,
+.cv-profile-link:focus {
+  border-color: var(--accent, #2f4b9b);
+  color: var(--accent, #2f4b9b);
   text-decoration: none;
 }
 
-.cv-profile-item a:hover {
-  text-decoration: underline;
-}
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
 
-/* Section Styles */
 .cv-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-7, 3rem);
 }
 
 .cv-section h2 {
-  border-bottom: 1px solid #f2f2f2;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #2a7ae2;
+  margin: 0 0 var(--space-4, 1rem);
+  padding-bottom: var(--space-3, 0.75rem);
+  border-bottom: 1px solid var(--border, #e7e6e2);
+  color: var(--text, #1a1c20);
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: var(--fs-h2, 1.4rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-.cv-section h2 i {
-  color: #666;
+/* --------------------------------------------------------------------------
+   Entries
+   -------------------------------------------------------------------------- */
+
+.cv-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* Item Styles */
 .cv-item {
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding: var(--space-4, 1rem) 0;
+  border-top: 1px solid var(--border, #e7e6e2);
+}
+
+.cv-item:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .cv-item-header {
   display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  gap: var(--space-2, 0.5rem) var(--space-4, 1rem);
 }
 
 .cv-item-title {
-  font-weight: bold;
-  font-size: 1.1rem;
+  margin: 0;
+  color: var(--text, #1a1c20);
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .cv-item-date {
-  color: #666;
+  color: var(--text-faint, #8a9099);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.78rem);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .cv-item-subtitle {
-  color: #666;
-  margin-bottom: 0.5rem;
+  margin: var(--space-1, 0.25rem) 0 0;
+  color: var(--accent, #2f4b9b);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.78rem);
+  letter-spacing: 0.02em;
 }
 
-.cv-item-summary {
-  margin-bottom: 0.5rem;
+.cv-item-content {
+  margin: var(--space-3, 0.75rem) 0 0;
+  color: var(--text-muted, #555b64);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.7;
 }
 
-.cv-item-highlights {
-  margin-top: 0.5rem;
-  padding-left: 1.5rem;
+.cv-item-content ul {
+  margin: var(--space-2, 0.5rem) 0 0;
+  padding-left: 1.35em;
 }
 
-.cv-item-highlights li {
-  margin-bottom: 0.25rem;
+.cv-item-content p {
+  margin: 0 0 var(--space-2, 0.5rem);
 }
 
-.cv-item-courses ul {
-  margin-top: 0.25rem;
-  padding-left: 1.5rem;
+.cv-item-detail {
+  margin: var(--space-2, 0.5rem) 0 0;
+  color: var(--text-muted, #555b64);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.7;
 }
 
-.cv-item-courses li {
-  margin-bottom: 0.25rem;
+.cv-item-detail ul {
+  margin: var(--space-2, 0.5rem) 0 0;
+  padding-left: 1.35em;
 }
 
-/* Skills Styles */
+/* --------------------------------------------------------------------------
+   Skills and highlights
+   -------------------------------------------------------------------------- */
+
 .cv-skills {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: var(--space-4, 1rem);
+}
+
+.cv-skill-category {
+  margin: 0;
 }
 
 .cv-skill-category h3 {
-  margin-bottom: 0.5rem;
-  color: #333;
+  margin: 0 0 var(--space-2, 0.5rem);
+  color: var(--text, #1a1c20);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.cv-skill-keywords {
+.cv-skill-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2, 0.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.cv-skill-keyword {
-  background-color: #f2f2f2;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
+.cv-skill-list li {
+  margin: 0;
+  padding: 0.15em 0.7em;
+  border: 1px solid var(--border, #e7e6e2);
+  border-radius: var(--radius-pill, 999px);
+  background-color: var(--bg-subtle, #f5f5f2);
+  color: var(--text-muted, #555b64);
+  font-size: var(--fs-xs, 0.78rem);
 }
 
-/* Project Styles */
-.cv-project-keywords {
+.cv-highlights {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-highlights li {
+  position: relative;
+  margin: 0 0 var(--space-2, 0.5rem);
+  padding-left: 1.5rem;
+  color: var(--text-muted, #555b64);
+  font-size: var(--fs-sm, 0.875rem);
+}
+
+.cv-highlights li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0.25rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent, #2f4b9b);
+  opacity: 0.65;
+}
+
+/* --------------------------------------------------------------------------
+   Downloads
+   -------------------------------------------------------------------------- */
+
+.cv-download-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: var(--space-3, 0.75rem);
+  margin-top: var(--space-6, 2rem);
+  padding-top: var(--space-5, 1.5rem);
+  border-top: 1px solid var(--border, #e7e6e2);
 }
 
-.cv-project-keyword {
-  background-color: #e6f3ff;
-  color: #2a7ae2;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
+/* --------------------------------------------------------------------------
+   Narrow-viewport adjustments
+   -------------------------------------------------------------------------- */
 
-/* Languages Styles */
-.cv-languages {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.cv-language {
-  display: flex;
-  flex-direction: column;
-}
-
-.cv-language-name {
-  font-weight: bold;
-}
-
-.cv-language-fluency {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Interests Styles */
-.cv-interests {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.cv-interest h3 {
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.cv-interest-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.cv-interest-keyword {
-  background-color: #f9f9f9;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-/* References Styles */
-.cv-references {
-  font-style: italic;
-  color: #666;
-}
-
-/* Print Styles */
-@media print {
-  .cv-container {
-    max-width: 100%;
+@media (max-width: 46em) {
+  .cv-item-header {
+    flex-direction: column;
   }
-  
-  .cv-header {
-    border-bottom-color: #ccc;
-  }
-  
-  .cv-section h2 {
-    border-bottom-color: #ccc;
-  }
-  
-  .cv-skill-keyword,
-  .cv-project-keyword,
-  .cv-interest-keyword {
-    border: 1px solid #ccc;
-    background-color: transparent;
+
+  .cv-item-date {
+    white-space: normal;
   }
 }

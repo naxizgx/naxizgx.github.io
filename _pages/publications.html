@@ -5,223 +5,88 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can find my all articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
 {% include base_path %}
 
-<!-- Publication Filters -->
+{% if site.author.googlescholar %}
+  <p class="page__lead wordwrap">You can find all my articles on <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener">my Google Scholar profile</a>.</p>
+{% endif %}
+
+{% comment %}
+The entries are grouped by category and fully rendered on the server. The
+refinement rail only hides entries, so every publication stays reachable and
+printable. Both rails and entries resolve venue names through the same include,
+which keeps a filter value and the metadata it matches in step.
+{% endcomment %}
 <div id="pub-content">
-  <div id="pub-sidebar">
+  <aside id="pub-sidebar" aria-label="Refine publications">
     <div class="filter-section">
-      <div class="filter-section-header">refine by year</div>
-      <ul class="filter-items" id="year-filters">
-        <li class="filter-item active" data-filter="all">All Years <span class="filter-count">({{ site.publications | size }})</span></li>
+      <h2 class="filter-section-header" id="filter-year-label">Refine by year</h2>
+      <ul class="filter-items" data-filter-group="year" aria-labelledby="filter-year-label">
+        <li>
+          <button type="button" class="filter-item is-active" data-filter="all" aria-pressed="true">
+            All years <span class="filter-count">{{ site.publications | size }}</span>
+          </button>
+        </li>
         {% assign years = "" | split: "" %}
         {% for pub in site.publications %}
           {% assign year = pub.date | date: "%Y" %}
-          {% unless years contains year %}
-            {% assign years = years | push: year %}
-          {% endunless %}
+          {% unless years contains year %}{% assign years = years | push: year %}{% endunless %}
         {% endfor %}
         {% assign years = years | sort | reverse %}
         {% for year in years %}
-          {% assign count = 0 %}
-          {% for pub in site.publications %}
-            {% assign pub_year = pub.date | date: "%Y" %}
-            {% if pub_year == year %}
-              {% assign count = count | plus: 1 %}
-            {% endif %}
-          {% endfor %}
-          <li class="filter-item" data-filter="{{ year }}">{{ year }} <span class="filter-count">({{ count }})</span></li>
+          <li>
+            <button type="button" class="filter-item" data-filter="{{ year }}" aria-pressed="false">
+              {{ year }} <span class="filter-count">{% include pub-count.html items=site.publications field="year" value=year %}</span>
+            </button>
+          </li>
         {% endfor %}
       </ul>
     </div>
+
     <div class="filter-section">
-      <div class="filter-section-header">refine by venue</div>
-      <ul class="filter-items" id="venue-filters">
-        <li class="filter-item active" data-filter="all">All Venues <span class="filter-count">({{ site.publications | size }})</span></li>
+      <h2 class="filter-section-header" id="filter-venue-label">Refine by venue</h2>
+      <ul class="filter-items" data-filter-group="venue" aria-labelledby="filter-venue-label">
+        <li>
+          <button type="button" class="filter-item is-active" data-filter="all" aria-pressed="true">
+            All venues <span class="filter-count">{{ site.publications | size }}</span>
+          </button>
+        </li>
         {% assign venues = "" | split: "" %}
         {% for pub in site.publications %}
-          {% assign raw_venue = pub.venue %}
-          {% assign normalized_venue = raw_venue %}
-          {% if raw_venue contains "Designs, Codes and Cryptography" %}
-            {% assign normalized_venue = "Designs, Codes and Cryptography" %}
-          {% elsif raw_venue contains "Soft Computing" %}
-            {% assign normalized_venue = "Soft Computing" %}
-          {% elsif raw_venue contains "The Computer Journal" %}
-            {% assign normalized_venue = "The Computer Journal" %}
-          {% elsif raw_venue contains "Chinese Journal of Computers" %}
-            {% assign normalized_venue = "Chinese Journal of Computers" %}
-          {% elsif raw_venue contains "IEEE Transactions on Vehicular" %}
-            {% assign normalized_venue = "IEEE Transactions on Vehicular" %}
-          {% elsif raw_venue contains "Journal of Computer Security" %}
-            {% assign normalized_venue = "Journal of Computer Security" %}
-          {% elsif raw_venue contains "ASIACRYPT" %}
-            {% assign normalized_venue = "ASIACRYPT" %}
-          {% elsif raw_venue contains "EUROCRYPT" %}
-            {% assign normalized_venue = "EUROCRYPT" %}
-          {% elsif raw_venue contains "ICISC" %}
-            {% assign normalized_venue = "ICISC" %}
-          {% elsif raw_venue contains "WISA" %}
-            {% assign normalized_venue = "WISA" %}
-          {% elsif raw_venue contains "PST" %}
-            {% assign normalized_venue = "PST" %}
-          {% endif %}
-          {% unless venues contains normalized_venue %}
-            {% assign venues = venues | push: normalized_venue %}
-          {% endunless %}
+          {% capture venue %}{% include pub-venue.html venue=pub.venue %}{% endcapture %}
+          {% assign venue = venue | strip %}
+          {% unless venues contains venue %}{% assign venues = venues | push: venue %}{% endunless %}
         {% endfor %}
         {% assign venues = venues | sort %}
         {% for venue in venues %}
-          {% assign count = 0 %}
-          {% for pub in site.publications %}
-            {% assign raw_venue = pub.venue %}
-            {% assign normalized_venue = raw_venue %}
-            {% if raw_venue contains "Designs, Codes and Cryptography" %}
-              {% assign normalized_venue = "Designs, Codes and Cryptography" %}
-            {% elsif raw_venue contains "Soft Computing" %}
-              {% assign normalized_venue = "Soft Computing" %}
-            {% elsif raw_venue contains "The Computer Journal" %}
-              {% assign normalized_venue = "The Computer Journal" %}
-            {% elsif raw_venue contains "Chinese Journal of Computers" %}
-              {% assign normalized_venue = "Chinese Journal of Computers" %}
-            {% elsif raw_venue contains "IEEE Transactions on Vehicular" %}
-              {% assign normalized_venue = "IEEE Transactions on Vehicular" %}
-            {% elsif raw_venue contains "Journal of Computer Security" %}
-              {% assign normalized_venue = "Journal of Computer Security" %}
-            {% elsif raw_venue contains "ASIACRYPT" %}
-              {% assign normalized_venue = "ASIACRYPT" %}
-            {% elsif raw_venue contains "EUROCRYPT" %}
-              {% assign normalized_venue = "EUROCRYPT" %}
-            {% elsif raw_venue contains "ICISC" %}
-              {% assign normalized_venue = "ICISC" %}
-            {% elsif raw_venue contains "WISA" %}
-              {% assign normalized_venue = "WISA" %}
-            {% elsif raw_venue contains "PST" %}
-              {% assign normalized_venue = "PST" %}
-            {% endif %}
-            {% if normalized_venue == venue %}
-              {% assign count = count | plus: 1 %}
-            {% endif %}
-          {% endfor %}
-          {% assign display_venue = venue %}
-          {% if venue == "Designs, Codes and Cryptography" %}
-            {% assign display_venue = "DCC" %}
-          {% endif %}
-          <li class="filter-item" data-filter="{{ venue | escape }}">{{ display_venue }} <span class="filter-count">({{ count }})</span></li>
+          {% capture label %}{% include pub-venue-short.html canonical=venue %}{% endcapture %}
+          <li>
+            <button type="button" class="filter-item" data-filter="{{ venue | escape }}" aria-pressed="false">
+              {{ label | strip }} <span class="filter-count">{% include pub-count.html items=site.publications field="venue" value=venue %}</span>
+            </button>
+          </li>
         {% endfor %}
       </ul>
     </div>
-  </div>
+  </aside>
+
   <div id="pub-list">
-
-{% if site.publication_category %}
-  {% for category in site.publication_category %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <div class="category-section" data-category="{{ category[0] }}">
-          <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      <div class="pub-item-wrapper" data-year="{{ post.date | date: "%Y" }}" data-venue="{% assign raw_venue = post.venue %}{% if raw_venue contains "Designs, Codes and Cryptography" %}Designs, Codes and Cryptography{% elsif raw_venue contains "Soft Computing" %}Soft Computing{% elsif raw_venue contains "The Computer Journal" %}The Computer Journal{% elsif raw_venue contains "Chinese Journal of Computers" %}Chinese Journal of Computers{% elsif raw_venue contains "IEEE Transactions on Vehicular" %}IEEE Transactions on Vehicular{% elsif raw_venue contains "Journal of Computer Security" %}Journal of Computer Security{% elsif raw_venue contains "ASIACRYPT" %}ASIACRYPT{% elsif raw_venue contains "EUROCRYPT" %}EUROCRYPT{% elsif raw_venue contains "ICISC" %}ICISC{% elsif raw_venue contains "WISA" %}WISA{% elsif raw_venue contains "PST" %}PST{% else %}{{ raw_venue }}{% endif %}" data-category="{{ post.category }}">
+    {% for category in site.publication_category %}
+      {% assign shown = false %}
+      {% for post in site.publications reversed %}
+        {% if post.category != category[0] %}{% continue %}{% endif %}
+        {% unless shown %}
+          <section class="category-section" data-category="{{ category[0] }}">
+            <h2 class="category-section__title">{{ category[1].title }}</h2>
+            <div class="pub-list">
+          {% assign shown = true %}
+        {% endunless %}
         {% include archive-single.html %}
-      </div>
+      {% endfor %}
+      {% if shown %}
+            </div>
+          </section>
+      {% endif %}
     {% endfor %}
-    {% if title_shown %}
-      </div>
-    {% endif %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    <div class="pub-item-wrapper" data-year="{{ post.date | date: "%Y" }}" data-venue="{% assign raw_venue = post.venue %}{% if raw_venue contains "Designs, Codes and Cryptography" %}Designs, Codes and Cryptography{% elsif raw_venue contains "Soft Computing" %}Soft Computing{% elsif raw_venue contains "The Computer Journal" %}The Computer Journal{% elsif raw_venue contains "Chinese Journal of Computers" %}Chinese Journal of Computers{% elsif raw_venue contains "IEEE Transactions on Vehicular" %}IEEE Transactions on Vehicular{% elsif raw_venue contains "Journal of Computer Security" %}Journal of Computer Security{% elsif raw_venue contains "ASIACRYPT" %}ASIACRYPT{% elsif raw_venue contains "EUROCRYPT" %}EUROCRYPT{% elsif raw_venue contains "ICISC" %}ICISC{% elsif raw_venue contains "WISA" %}WISA{% elsif raw_venue contains "PST" %}PST{% else %}{{ raw_venue }}{% endif %}">
-      {% include archive-single.html %}
-    </div>
-  {% endfor %}
-{% endif %}
-
+  </div>
 </div>
-</div>
-
-<script>
-(function() {
-  'use strict';
-
-  var yearFilter = 'all';
-  var venueFilter = 'all';
-
-  function applyFilters() {
-    var items = document.querySelectorAll('.pub-item-wrapper');
-
-    items.forEach(function(item) {
-      var matches = true;
-
-      if (yearFilter !== 'all') {
-        if (item.getAttribute('data-year') !== yearFilter) {
-          matches = false;
-        }
-      }
-
-      if (venueFilter !== 'all') {
-        if (item.getAttribute('data-venue') !== venueFilter) {
-          matches = false;
-        }
-      }
-
-      if (matches) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-
-    var categorySections = document.querySelectorAll('.category-section');
-    categorySections.forEach(function(section) {
-      var categoryItems = section.querySelectorAll('.pub-item-wrapper');
-      var hasVisibleItem = false;
-      categoryItems.forEach(function(item) {
-        if (item.style.display !== 'none') {
-          hasVisibleItem = true;
-        }
-      });
-      if (hasVisibleItem) {
-        section.style.display = '';
-      } else {
-        section.style.display = 'none';
-      }
-    });
-  }
-
-  function attachEventListeners() {
-    var yearFilters = document.querySelectorAll('#year-filters .filter-item');
-    yearFilters.forEach(function(item) {
-      item.addEventListener('click', function() {
-        yearFilters.forEach(function(el) { el.classList.remove('active'); });
-        item.classList.add('active');
-        yearFilter = item.getAttribute('data-filter');
-        applyFilters();
-      });
-    });
-
-    var venueFilters = document.querySelectorAll('#venue-filters .filter-item');
-    venueFilters.forEach(function(item) {
-      item.addEventListener('click', function() {
-        venueFilters.forEach(function(el) { el.classList.remove('active'); });
-        item.classList.add('active');
-        venueFilter = item.getAttribute('data-filter');
-        applyFilters();
-      });
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    attachEventListeners();
-    applyFilters();
-  });
-})();
-</script>

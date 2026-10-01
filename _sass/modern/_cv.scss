@@ -1,0 +1,66 @@
+/* ==========================================================================
+   CURRICULUM VITAE
+   --------------------------------------------------------------------------
+   Entries inside the CV page: a compact definition-list rhythm with the role,
+   the venue and the year on separate monospace lines.
+   ========================================================================== */
+
+.cv-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-entry {
+  margin: 0;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border);
+}
+
+.cv-entry:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.cv-entry__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.cv-entry__title a {
+  color: var(--text);
+}
+
+.cv-entry__title a:hover,
+.cv-entry__title a:focus {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.cv-entry__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: var(--space-1) 0 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+}
+
+.cv-entry__venue {
+  color: var(--accent);
+}
+
+.cv-entry__date {
+  color: var(--text-faint);
+}
+
+.cv-entry__note {
+  margin: var(--space-2) 0 0;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}

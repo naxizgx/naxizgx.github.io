@@ -1,9 +1,14 @@
 # Ignore the contents of the _site directory and other cache directories
 _site/
 .sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 
 # Ignore the directory for local files during development
 local/
+
+# Local snapshots of the site; the pre-refactor tree stays reachable as 5f46cb6
+backups/
 
 # Ignore the Gemfile that is generated
 Gemfile.lock

@@ -1,0 +1,290 @@
+/* ==========================================================================
+   CHROME
+   --------------------------------------------------------------------------
+   Fixed masthead, primary navigation, theme control and page footer.
+   ========================================================================== */
+
+.masthead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: var(--masthead-h);
+  border-bottom: 1px solid var(--border);
+  background-color: var(--bg);
+}
+
+@supports (backdrop-filter: blur(6px)) {
+  .masthead {
+    background-color: var(--bg-glass);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+  }
+}
+
+.masthead__inner-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  max-width: var(--container);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.masthead__brand {
+  flex: none;
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.masthead__brand:hover,
+.masthead__brand:focus {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.masthead__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-left: auto;
+}
+
+.masthead__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.masthead__menu-item {
+  margin: 0;
+}
+
+.masthead__menu-item > a {
+  position: relative;
+  display: inline-block;
+  padding: var(--space-2) 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color var(--dur) var(--ease);
+}
+
+.masthead__menu-item > a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1.5px;
+  border-radius: 1px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+.masthead__menu-item > a:hover,
+.masthead__menu-item > a:focus {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.masthead__menu-item.is-active > a,
+.masthead__menu-item > a:hover,
+.masthead__menu-item > a:focus {
+  color: var(--text);
+}
+
+.masthead__menu-item.is-active > a::after,
+.masthead__menu-item > a:hover::after,
+.masthead__menu-item > a:focus::after {
+  transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   Theme control
+   -------------------------------------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--text-muted);
+  transition: color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.theme-toggle svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
+
+.theme-toggle .theme-toggle__moon {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle .theme-toggle__sun {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle .theme-toggle__moon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .theme-toggle .theme-toggle__sun {
+    display: none;
+  }
+
+  html:not([data-theme="light"]) .theme-toggle .theme-toggle__moon {
+    display: block;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Small screens: let the navigation wrap instead of collapsing behind a script.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 46em) {
+  .masthead {
+    height: auto;
+  }
+
+  body {
+    padding-top: 5.25rem;
+  }
+
+  .masthead__inner-wrap {
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .masthead__brand {
+    font-size: 1rem;
+  }
+
+  .masthead__nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: var(--space-4);
+  }
+
+  .masthead__menu {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.page__footer {
+  margin-top: var(--space-8);
+  border-top: 1px solid var(--border);
+  background-color: var(--bg);
+}
+
+.page__footer footer {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-7);
+}
+
+.page__footer-follow {
+  margin-bottom: var(--space-5);
+}
+
+.page__footer-follow .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page__footer-follow li {
+  margin: 0;
+}
+
+.page__footer-follow a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+}
+
+.page__footer-follow a:hover,
+.page__footer-follow a:focus {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.page__footer-copyright {
+  max-width: var(--measure);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.7;
+}
+
+.page__footer-copyright a {
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Breadcrumbs
+   -------------------------------------------------------------------------- */
+
+.breadcrumbs {
+  margin-bottom: var(--space-5);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: var(--space-2);
+  color: var(--border-strong);
+}

@@ -1,42 +1,31 @@
 {% include base_path %}
 
-{% if post.header.teaser %}
-  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
-{% else %}
-  {% assign teaser = site.teaser %}
-{% endif %}
-
 {% if post.id %}
   {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
   {% assign title = post.title %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    <li>
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="">
-      </div>
-    {% endif %}
-    <h3 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-      {% endif %}
-    </h3>
-    {% if post.read_time %}
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
-    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p> {% endif %}
-    </li>
- </article>
-</div>
+{% assign entry_year = post.date | date: "%Y" %}
+{% if post.collection == "publications" %}
+  {% capture entry_venue %}{% include pub-venue.html venue=post.venue %}{% endcapture %}
+  {% assign entry_venue = entry_venue | strip %}
+{% else %}
+  {% assign entry_venue = post.venue %}
+{% endif %}
+
+<li class="cv-entry" itemscope itemtype="http://schema.org/CreativeWork">
+  <p class="cv-entry__title" itemprop="headline">
+    <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+  </p>
+
+  <p class="cv-entry__meta">
+    {% if post.type %}<span class="cv-entry__type">{{ post.type }}</span>{% endif %}
+    {% if entry_venue != "" %}<span class="cv-entry__venue">{{ entry_venue }}</span>{% endif %}
+    {% if post.date %}<span class="cv-entry__date">{{ entry_year }}</span>{% endif %}
+  </p>
+
+  {% if post.citation %}
+    <p class="cv-entry__note">{{ post.citation }}</p>
+  {% endif %}
+</li>

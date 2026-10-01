@@ -1,0 +1,18 @@
+{%- comment -%}
+Compact venue label for the refinement rail, where the column is narrow.
+Takes the canonical label produced by pub-venue.html.
+{%- endcomment -%}
+{%- assign canonical = include.canonical | default: "" -%}
+{%- if canonical == "Designs, Codes and Cryptography" -%}
+DCC
+{%- elsif canonical == "The Computer Journal" -%}
+Comput. J.
+{%- elsif canonical == "Chinese Journal of Computers" -%}
+Chin. J. Comput.
+{%- elsif canonical == "IEEE Transactions on Vehicular Technology" -%}
+IEEE T-VT
+{%- elsif canonical == "Journal of Computer Security" -%}
+J. Comput. Secur.
+{%- else -%}
+{{ canonical }}
+{%- endif -%}

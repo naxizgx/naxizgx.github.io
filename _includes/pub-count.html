@@ -1,0 +1,20 @@
+{%- comment -%}
+Count the entries in `items` whose facet equals `value`.
+
+`field` is either "year" or "venue"; years are read from the entry date and
+venues through the canonical label, the same way the entries themselves are
+labelled. Pass `items` as a collection.
+{%- endcomment -%}
+{%- assign total = 0 -%}
+{%- for entry in include.items -%}
+  {%- if include.field == "year" -%}
+    {%- assign entry_value = entry.date | date: "%Y" -%}
+  {%- else -%}
+    {%- capture entry_value -%}{%- include pub-venue.html venue=entry.venue -%}{%- endcapture -%}
+    {%- assign entry_value = entry_value | strip -%}
+  {%- endif -%}
+  {%- if entry_value == include.value -%}
+    {%- assign total = total | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{{- total -}}
