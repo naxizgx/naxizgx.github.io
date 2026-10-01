@@ -216,6 +216,7 @@ html[data-theme="dark"] .theme-toggle .theme-toggle__moon {
   max-width: var(--container);
   margin: 0 auto;
   padding: var(--space-6) var(--space-5) var(--space-7);
+  text-align: center;
 }
 
 .page__footer-follow {
@@ -225,6 +226,7 @@ html[data-theme="dark"] .theme-toggle .theme-toggle__moon {
 .page__footer-follow .social-icons {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-3) var(--space-5);
   margin: 0;
   padding: 0;
@@ -251,8 +253,9 @@ html[data-theme="dark"] .theme-toggle .theme-toggle__moon {
   text-decoration: none;
 }
 
+/* The line is short enough to stay on one line on a normal viewport, so it is
+   not capped to the reading measure here. */
 .page__footer-copyright {
-  max-width: var(--measure);
   color: var(--text-faint);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
